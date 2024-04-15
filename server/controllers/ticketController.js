@@ -2,6 +2,7 @@ import query from '../models/ticketModel.js';
 import format from 'pg-format';
 const ticketController = {};
 
+//To-do - improve error handling on all methods
 ticketController.createTicket = async (req, res, next) => {
   try {
     const values = Object.values(req.body);
