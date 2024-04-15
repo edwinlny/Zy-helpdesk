@@ -1,6 +1,7 @@
 import query from '../models/ticketModel.js';
 
 export async function createTicketsTable() {
+  //To-do : add constraints to status (new, inprogress, resolved)
   const createTableQuery = `
   CREATE TABLE IF NOT EXISTS tickets (
     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
@@ -8,6 +9,7 @@ export async function createTicketsTable() {
     email VARCHAR(255) NOT NULL,
     description VARCHAR(2000) NOT NULL,
     status VARCHAR(255) DEFAULT 'New',
+    response VARCHAR(2000),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     );
   `;
