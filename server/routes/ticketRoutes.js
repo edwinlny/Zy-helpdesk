@@ -1,12 +1,11 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
 
 //Add controllers here
-// const testController = require('../controllers/testController');
+import ticketController from '../controllers/ticketController.js';
 
-//
-router.get('/', (req, res) => {
-  res.status(200).json({})
+router.post('/', ticketController.createTicket, (req, res) => {
+  res.status(200).json({ message: 'Ticket created successfully' });
 });
 
-module.exports = router;
+export default router;
