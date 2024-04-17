@@ -6,12 +6,11 @@ This is Edwin Leong's submission for the Z Engineering Take Home Coding Activity
 
 ##Table of Contents
 
-- Local Depedency Setup
-- Local Repo Setup
+- Environment Setup
+- App Set-up
 - Optimizations
-- Bonus Functionality
 
-### Dependencies
+### Environment Setup
 
 - Required:
   - Git (https://git-scm.com)
@@ -21,27 +20,30 @@ This is Edwin Leong's submission for the Z Engineering Take Home Coding Activity
   - For Mac Users (https://brew.sh/)
   - Postgres https://www.postgresql.org/download/
 
-## Setup Steps
+## App Set-up
 
-- 1. Copy github link (https://github.com/edwinlny/li-weatherapp.git)
-- 2. Navigate to directory of your choice and run 'git clone https://github.com/edwinlny/li-weatherapp.git '
+- 1. Copy github link https://github.com/edwinlny/Zy-helpdesk.git
+- 2. Navigate to directory of your choice and run ' git clone 'https://github.com/edwinlny/Zy-helpdesk.git '
 - 3. Navigate to directoy it was installed in. 'npm install' to install dependencies
-- 4. Create .env file and add the following line - WEATHER_API_KEY=82ab54a9747d683a88066e0459b9976e (API key included only for ease of use)
+- 4. Create .env file and add the following line - PG_URI = postgres://tickets_g74e_user:8mtN5oLobzFgZz5nKUESgvEsgF5UUUYi@dpg-coe2hk8l6cac73bst830-a.ohio-postgres.render.com/tickets_g74e?ssl=true (included only for ease of use)
 - 5. 'npm run start' to start backend server
-- 6. 'npm run client' to start client server
+- 6. 'npm run build' to build
+- 7. 'npm run preview' - open your localhost to view
 
-## Optimizations
+## To-Do/Optimizations
 
-- 1. Mobile formatting enhancement:
-  - Evaluate and optimize the responsiveness of the mobile layout by implementing media queries and adjusting CSS styles to ensure a consistent and user-friendly experience across various screen sizes and devices.
-- 2. Improve Weather Data Processing
-  - Address the limitation of the current weather data processing, which relies on 3-hour intervals for min/max temperature calculations. Explore options such as: - Implementing advanced data parsing techniques to extract more granular temperature data. - Integration of a paid API key to access more accurate and detailed weather information.
-- 3. Codebase Refinement and Optimization:
-
-  - Review the transition from HTML to Tailwind CSS and identify opportunities to streamline the codebase.
-  - Conduct a thorough code audit to identify and remove any unused or redundant code segments.
-  - Implement best practices for code organization, such as modularization and component-based architecture, to enhance maintainability and scalability. i.e. adding convertTemperature to util folder.
-
-  ## Bonus Functionality
-
-  - Version control - Used feature branches, pr and release branches
+- 1. "Home Page" 
+  - Add Toasts for Invalid data input
+  - Add Toasts for Valid data input
+  - Styling/Formatting with themed colors
+- 2. "Admin Page"
+  - Complete search functionality - was unable to properly pass filtered state to Table component and update results dynamically. Search function itself was working. Add debounce (500ms) to avoid constant re-rendering
+  - Add filters for each column of the table, allow back-end staff to easily sort by Status, Name.
+  - Add additional columns, time/date was fetched but unused
+  - Add categories - group certain keywords together to form categories
+  - Add Pagination (list first 15 results only)
+  - Limiting char size on table - currently will stretch entire screen if long response or summary
+  - Add conditional rendering for Status - change color based on status
+  - Add Toasts for successful and unsucessful modifications
+  - Add functionality to delete tickets
+- 3. Unit Testing for components
