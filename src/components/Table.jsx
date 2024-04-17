@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import AccentButton from './AccentButton';
 import axios from 'axios';
-//Add Search bar at top ,
+
+
+
 //add toast
-//json.parse(json.stringify(obj))
 
 //TO-do - conditional color rendering for Status bar
 const Table = (props) => {
@@ -38,7 +39,7 @@ const Table = (props) => {
       setTicketData((prevData) => {
         return prevData.map((ticket) => {
           if (ticket.id === selectedTicket.id) {
-            return selectedTicket;
+            return { ...ticket, ...selectedTicket }; 
           }
           return ticket;
         });

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import AccentButton from './AccentButton';
 import axios from 'axios';
-
+import Toast from './Toast';
 
 //TO-DO - Add success/failure notification, handle data validation
 const TicketCard = () => {
@@ -11,6 +11,15 @@ const TicketCard = () => {
     description: '',
   });
 
+
+
+  const isValidEmail = (email) => {
+    // Regular expression for basic email validation
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailPattern.test(email);
+  };
+  
+  
   const handleCloseModal = () => {
    document.getElementById('my_modal_3').close()
   }
@@ -27,7 +36,16 @@ const TicketCard = () => {
     //To-do create data validation
     //add toast to pop-up
     event.preventDefault();
-    console.log('Form Data', formData);
+    
+  if(!formData.name || !formData.description) {
+    return;
+  }
+  if (!isValidEmail(formData.email)) {
+    console.error('Invalid email address');
+    return;
+  }
+  console.log('Form Data', formData);
+    
     try {
       const response = await axios.post(
         'tickets',
@@ -70,6 +88,7 @@ const TicketCard = () => {
           </button>
           <dialog id='my_modal_3' className='modal'>
             <div className='modal-box'>
+              
               <form onSubmit={handleSubmit} method='dialog'>
                 <button type="button" className='btn btn-sm btn-circle btn-ghost absolute right-2 top-2' onClick={handleCloseModal}>
                   ✕
@@ -110,6 +129,7 @@ const TicketCard = () => {
                   <AccentButton/>
                 </div>
               </form>
+              
             </div>
           </dialog>
         </div>
