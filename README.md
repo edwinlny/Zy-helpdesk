@@ -28,7 +28,7 @@ This is Edwin Leong's submission for the Z Engineering Take Home Coding Activity
 - 4. Create .env file and add the following line - PG_URI = postgres://tickets_g74e_user:8mtN5oLobzFgZz5nKUESgvEsgF5UUUYi@dpg-coe2hk8l6cac73bst830-a.ohio-postgres.render.com/tickets_g74e?ssl=true (included only for ease of use)
 - 5. 'npm run start' to start backend server
 - 6. 'npm run build' to build
-- 7. 'npm run preview' - open your localhost to view
+- 7. 'npm run dev' - open your localhost to view
 
 ## To-Do/Optimizations
 
