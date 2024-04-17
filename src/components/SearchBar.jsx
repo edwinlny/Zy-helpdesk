@@ -1,10 +1,10 @@
-import React, {useState}  from "react";
+import React, { useState } from 'react';
 
 const Searchbar = (props) => {
-  const {ticketData, setFilteredTickets} = props;
-  
-  const [query, setQuery] = useState('');
- 
+  // const {ticketData, setFilteredTickets} = props;
+
+  // const [query, setQuery] = useState('');
+
   // const getFilteredItems = (query, items) => {
   //   if (!query) {
   //     return items;
@@ -16,42 +16,41 @@ const Searchbar = (props) => {
   //     });
   //   }
   // };
-  const getFilteredItems = (query, items) => {
-    console.log("Query:", query);
-    console.log("Items:", items);
-    
-    if (!query) {
-      console.log("No query, returning all items");
-      return items; 
-    } else {
-      const filtered = items.filter((item) => {
-        const match = Object.values(item).some((value) =>
-          value.toString().toLowerCase().includes(query.toLowerCase())
-        );
-        console.log("Item:", item);
-        console.log("Match:", match);
-        return match;
-      });
-      console.log("Filtered items:", filtered);
-      return filtered;
-    }
-  };
-  
-//add debounce
-  const handleSearch = (e) => {
-    const query = e.target.value;
-    console.log('query', query)
-    setQuery(query);
-    const filteredTickets = getFilteredItems(query, ticketData);
-    console.log('filteredTix', filteredTickets)
-    setFilteredTickets(filteredTickets);
-  };
+  //   const getFilteredItems = (query, items) => {
+  //     console.log("Query:", query);
+  //     console.log("Items:", items);
 
-  
+  //     if (!query) {
+  //       console.log("No query, returning all items");
+  //       return items;
+  //     } else {
+  //       const filtered = items.filter((item) => {
+  //         const match = Object.values(item).some((value) =>
+  //           value.toString().toLowerCase().includes(query.toLowerCase())
+  //         );
+  //         console.log("Item:", item);
+  //         console.log("Match:", match);
+  //         return match;
+  //       });
+  //       console.log("Filtered items:", filtered);
+  //       return filtered;
+  //     }
+  //   };
+
+  // //add debounce
+  //   const handleSearch = (e) => {
+  //     const query = e.target.value;
+  //     console.log('query', query)
+  //     setQuery(query);
+  //     const filteredTickets = getFilteredItems(query, ticketData);
+  //     console.log('filteredTix', filteredTickets)
+  //     setFilteredTickets(filteredTickets);
+  //   };
+
   return (
-    
     <label className='input input-bordered flex items-center gap-2'>
-      <input type='text' className='grow' placeholder='Search' value={query} onChange={handleSearch} />
+      <input type='text' className='grow' placeholder='Search' />
+      {/* <input type='text' className='grow' placeholder='Search' value={query} onChange={handleSearch} /> */}
       <svg
         xmlns='http://www.w3.org/2000/svg'
         viewBox='0 0 16 16'
