@@ -1,4 +1,4 @@
-import 'dotenv/config'
+import 'dotenv/config';
 import express from 'express';
 import ViteExpress from 'vite-express';
 import ticketRouter from './server/routes/ticketRoutes.js';
@@ -12,7 +12,6 @@ app.use(express.urlencoded({ extended: true }));
 
 //Routes
 app.use('/tickets', ticketRouter);
-
 
 createTicketsTable();
 

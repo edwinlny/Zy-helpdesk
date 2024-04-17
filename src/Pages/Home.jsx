@@ -1,5 +1,5 @@
 import NavBar from '../components/NavBar';
-import Card from '../components/Card';
+import TicketCard from '../components/TicketCard';
 import Footer from '../components/Footer';
 const Home = () => {
   return (
@@ -17,7 +17,7 @@ const Home = () => {
         </ul>
       </div>
       <div className='flex justify-center'>
-      <Card/>
+      <TicketCard/>
       </div>
       
       <Footer />

@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 const NavBar = () => {
   return (
@@ -14,7 +15,7 @@ const NavBar = () => {
             Tools
           </summary>
           <ul className="p-2 bg-base-100 rounded-t-none">
-            <li><a>Admin</a></li>
+            <li><Link to="/admin"><a>Admin</a></Link></li>
           </ul>
         </details>
       </li>
