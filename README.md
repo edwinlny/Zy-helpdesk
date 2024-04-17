@@ -15,7 +15,7 @@ This is Edwin Leong's submission for the Z Engineering Take Home Coding Activity
 - Required:
   - Git (https://git-scm.com)
   - npm (https://www.npmjs.com)
-  - Node https://nodejs.org/en/download/
+  - Node https://nodejs.org/en/download/ (Use Version 18.16.0!)
   - For Window Users (https://learn.microsoft.com/en-us/windows/wsl/install#manual-installation-steps)
   - For Mac Users (https://brew.sh/)
   - Postgres https://www.postgresql.org/download/
