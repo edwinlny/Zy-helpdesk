@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import AccentButton from './AccentButton';
 import axios from 'axios';
-import Toast from './Toast';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 //TO-DO - Add success/failure notification, handle data validation
 const TicketCard = () => {
@@ -11,7 +12,7 @@ const TicketCard = () => {
     description: '',
   });
 
-
+  const notify = () => toast("This is a toast notification !");
 
   const isValidEmail = (email) => {
     // Regular expression for basic email validation
@@ -42,6 +43,7 @@ const TicketCard = () => {
   }
   if (!isValidEmail(formData.email)) {
     console.error('Invalid email address');
+    toast.error('Invalid email address')
     return;
   }
   console.log('Form Data', formData);
@@ -61,6 +63,7 @@ const TicketCard = () => {
         }
       );
       console.log('“Would normally send email here with body: ...”')
+      toast.success('Your ticket has been submitted')
       handleCloseModal()
 
     } catch (error) {
@@ -133,7 +136,9 @@ const TicketCard = () => {
             </div>
           </dialog>
         </div>
+        
       </div>
+      <ToastContainer autoClose={2500} position={'top-center'}/>
     </div>
   );
 };
