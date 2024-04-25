@@ -3,7 +3,7 @@ import AccentButton from './AccentButton';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import { postTicket } from '../../server/helperFunctions/helperFunctions';
 //TO-DO - Add success/failure notification, handle data validation
 const TicketCard = () => {
   const [formData, setFormData] = useState({
@@ -49,19 +49,7 @@ const TicketCard = () => {
   console.log('Form Data', formData);
     
     try {
-      const response = await axios.post(
-        'tickets',
-        {
-          name: formData.name,
-          email: formData.email,
-          description: formData.description,
-        },
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      );
+      postTicket(formData)
       console.log('“Would normally send email here with body: ...”')
       toast.success('Your ticket has been submitted')
       setFormData({
