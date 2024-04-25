@@ -64,6 +64,11 @@ const TicketCard = () => {
       );
       console.log('“Would normally send email here with body: ...”')
       toast.success('Your ticket has been submitted')
+      setFormData({
+        name: '',
+        email: '',
+        description: ''
+      })
       handleCloseModal()
 
     } catch (error) {
