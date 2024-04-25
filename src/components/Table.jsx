@@ -16,6 +16,10 @@ const Table = (props) => {
     console.log('selectedtix', selectedTicket);
   };
 
+  const handleCloseModal = () => {
+    document.getElementById('my_modal_1').close()
+   }
+
   const handleResponseChange = (e) => {
     setSelectedTicket((prevState) => ({
       ...prevState,
@@ -81,8 +85,8 @@ const Table = (props) => {
           ))}
         </tbody>
       </table>
-      <dialog id='my_modal_1' className='modal'>
-        <div className='modal-box bg-neutral-content min-h-screen  w-full sm:w-6/12 flex flex-col'>
+      <dialog id='my_modal_1' className='modal'  onClick={handleCloseModal}>
+        <div className='modal-box bg-neutral-content min-h-64  w-full sm:w-6/12 flex flex-col' onClick={e => e.stopPropagation()}>
           <form method='dialog'>
             {/* if there is a button in form, it will close the modal */}
             <button className='btn btn-sm btn-circle btn-ghost absolute right-2 top-2'>

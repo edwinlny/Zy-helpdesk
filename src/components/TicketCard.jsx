@@ -12,8 +12,6 @@ const TicketCard = () => {
     description: '',
   });
 
-  const notify = () => toast("This is a toast notification !");
-
   const isValidEmail = (email) => {
     // Regular expression for basic email validation
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -24,6 +22,8 @@ const TicketCard = () => {
   const handleCloseModal = () => {
    document.getElementById('my_modal_3').close()
   }
+
+
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -76,6 +76,7 @@ const TicketCard = () => {
     }
   };
 
+
   return (
     <div className='w-64 bg-base-100 shadow-xl justify-center'>
       <figure className='px-10 pt-10'>
@@ -94,8 +95,8 @@ const TicketCard = () => {
           >
             Submit a Ticket
           </button>
-          <dialog id='my_modal_3' className='modal'>
-            <div className='modal-box'>
+          <dialog id='my_modal_3' className='modal'  onClick={handleCloseModal}>
+            <div className='modal-box' onClick={e => e.stopPropagation()}>
               
               <form onSubmit={handleSubmit} method='dialog'>
                 <button type="button" className='btn btn-sm btn-circle btn-ghost absolute right-2 top-2' onClick={handleCloseModal}>
