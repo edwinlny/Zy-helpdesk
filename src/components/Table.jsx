@@ -82,14 +82,14 @@ const Table = (props) => {
         </tbody>
       </table>
       <dialog id='my_modal_1' className='modal'>
-        <div className='modal-box min-w-80 max-w-5xl min-h-64 max-h-full bg-neutral-content'>
+        <div className='modal-box bg-neutral-content min-h-screen  w-full sm:w-6/12 flex flex-col'>
           <form method='dialog'>
             {/* if there is a button in form, it will close the modal */}
             <button className='btn btn-sm btn-circle btn-ghost absolute right-2 top-2'>
               ✕
             </button>
 
-            <div className='card w-full '>
+            <div className='card w-full  '>
               <div className='card-body'>
                 <div className='flex justify-between'>
                   <div className='badge badge-accent badge-outline rounded-box max-w-100 text-lg p-6'>
