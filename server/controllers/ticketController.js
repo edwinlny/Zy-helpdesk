@@ -68,7 +68,9 @@ ticketController.getTickets = async (req, res, next) => {
       data = await query(text, [ticketID]);
     } else {
       text = `
-      SELECT * FROM tickets;
+      SELECT * FROM tickets
+      ORDER BY created_at DESC
+      ;
       `;
       data = await query(text);
     }
