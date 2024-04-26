@@ -16,13 +16,10 @@ const TicketCard = () => {
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailPattern.test(email);
   };
-  
-  
+
   const handleCloseModal = () => {
-   document.getElementById('my_modal_3').close()
-  }
-
-
+    document.getElementById('my_modal_3').close();
+  };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -36,17 +33,17 @@ const TicketCard = () => {
     //To-do create data validation
     //add toast to pop-up
     event.preventDefault();
-    
-  if(!formData.name || !formData.description) {
-    return;
-  }
-  if (!isValidEmail(formData.email)) {
-    console.error('Invalid email address');
-    toast.error('Invalid email address')
-    return;
-  }
-  console.log('Form Data', formData);
-    
+
+    if (!formData.name || !formData.description) {
+      return;
+    }
+    if (!isValidEmail(formData.email)) {
+      console.error('Invalid email address');
+      toast.error('Invalid email address');
+      return;
+    }
+    console.log('Form Data', formData);
+
     try {
       const response = await axios.post(
         'tickets',
@@ -61,20 +58,18 @@ const TicketCard = () => {
           },
         }
       );
-      console.log('“Would normally send email here with body: ...”')
-      toast.success('Your ticket has been submitted')
+      console.log('“Would normally send email here with body: ...”');
+      toast.success('Your ticket has been submitted');
       setFormData({
         name: '',
         email: '',
-        description: ''
-      })
-      handleCloseModal()
-
+        description: '',
+      });
+      handleCloseModal();
     } catch (error) {
       console.error('Error occured when submitting :', error);
     }
   };
-
 
   return (
     <div className='w-64 bg-base-100 shadow-xl justify-center'>
@@ -94,11 +89,14 @@ const TicketCard = () => {
           >
             Submit a Ticket
           </button>
-          <dialog id='my_modal_3' className='modal'  onClick={handleCloseModal}>
-            <div className='modal-box' onClick={e => e.stopPropagation()}>
-              
+          <dialog id='my_modal_3' className='modal' onClick={handleCloseModal}>
+            <div className='modal-box' onClick={(e) => e.stopPropagation()}>
               <form onSubmit={handleSubmit} method='dialog'>
-                <button type="button" className='btn btn-sm btn-circle btn-ghost absolute right-2 top-2' onClick={handleCloseModal}>
+                <button
+                  type='button'
+                  className='btn btn-sm btn-circle btn-ghost absolute right-2 top-2'
+                  onClick={handleCloseModal}
+                >
                   ✕
                 </button>
                 <h3 className='font-bold text-lg'>Hello!</h3>
@@ -134,16 +132,14 @@ const TicketCard = () => {
                   ></textarea>
                 </div>
                 <div className='pt-6'>
-                  <AccentButton/>
+                  <AccentButton />
                 </div>
               </form>
-              
             </div>
           </dialog>
         </div>
-        
       </div>
-      <ToastContainer autoClose={2500} position={'top-center'}/>
+      <ToastContainer autoClose={2500} position={'top-center'} />
     </div>
   );
 };

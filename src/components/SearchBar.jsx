@@ -1,68 +1,53 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+const Searchbar = ({searchQuery, setSearchQuery}) => {
+  const [inputValue, setInputValue] = useState('')
+  const handleClick =  async () => {
+    // Perform the action you need when the button is clicked
+    // In this case, simply update the searchQuery state
+    try{
+    setSearchQuery(inputValue);
+    console.log('searchQuery', searchQuery)
+    }catch (error) {
+      console.log('failed to search', error)
+    }
+  };
 
-const Searchbar = (props) => {
-  // const {ticketData, setFilteredTickets} = props;
-
-  // const [query, setQuery] = useState('');
-
-  // const getFilteredItems = (query, items) => {
-  //   if (!query) {
-  //     return items;
-  //   } else {
-  //     return items.filter((item) => {
-  //       return Object.values(item).some((value) =>
-  //         value.toString().toLowerCase().includes(query.toLowerCase())
-  //       );
+  // const handleTicketSubmit = async () => {
+  //   try {
+  //     const response = await axios.put(
+  //       `/tickets/${selectedTicket.id}`,
+  //       selectedTicket
+  //     );
+  //     console.log('Updated ticket', response);
+  //     setTicketData((prevData) => {
+  //       return prevData.map((ticket) => {
+  //         if (ticket.id === selectedTicket.id) {
+  //           return { ...ticket, ...selectedTicket };
+  //         }
+  //         return ticket;
+  //       });
   //     });
+  //   } catch (error) {
+  //     console.log('Failed to update db', error);
   //   }
   // };
-  //   const getFilteredItems = (query, items) => {
-  //     console.log("Query:", query);
-  //     console.log("Items:", items);
 
-  //     if (!query) {
-  //       console.log("No query, returning all items");
-  //       return items;
-  //     } else {
-  //       const filtered = items.filter((item) => {
-  //         const match = Object.values(item).some((value) =>
-  //           value.toString().toLowerCase().includes(query.toLowerCase())
-  //         );
-  //         console.log("Item:", item);
-  //         console.log("Match:", match);
-  //         return match;
-  //       });
-  //       console.log("Filtered items:", filtered);
-  //       return filtered;
-  //     }
-  //   };
-
-  // //add debounce
-  //   const handleSearch = (e) => {
-  //     const query = e.target.value;
-  //     console.log('query', query)
-  //     setQuery(query);
-  //     const filteredTickets = getFilteredItems(query, ticketData);
-  //     console.log('filteredTix', filteredTickets)
-  //     setFilteredTickets(filteredTickets);
-  //   };
-
+  
+  const handleChange = (e) => {
+    setInputValue(e.target.value);
+  };
+  
   return (
     <label className='input input-bordered flex items-center gap-2'>
-      <input type='text' className='grow' placeholder='Search' />
-      {/* <input type='text' className='grow' placeholder='Search' value={query} onChange={handleSearch} /> */}
-      <svg
-        xmlns='http://www.w3.org/2000/svg'
-        viewBox='0 0 16 16'
-        fill='currentColor'
-        className='w-4 h-4 opacity-70'
-      >
-        <path
-          fillRule='evenodd'
-          d='M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z'
-          clipRule='evenodd'
-        />
-      </svg>
+      <input type='text' className='grow' placeholder='Search' value={inputValue} onChange={handleChange}  />
+
+      <button onClick={handleClick} type="button" className="p-2.5 ms-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+        <svg className="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+        </svg>
+        <span className="sr-only">Search</span>
+    </button>
     </label>
   );
 };

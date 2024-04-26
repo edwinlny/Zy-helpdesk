@@ -24,4 +24,8 @@ router.get('/:ticketID', ticketController.getTickets, (req, res) => {
   res.status(200).json(res.locals);
 });
 
+router.get('/search', ticketController.searchTickets, (req, res) => {
+  res.status(200).json(res.locals);
+});
+
 export default router;
