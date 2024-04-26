@@ -39,13 +39,13 @@ This is Edwin Leong's submission for the Z Engineering Take Home Coding Activity
   2. Convert all controllers to use Prisma.
  
 ## Version 1.1
-a880162 refactor: tickets will be pulled by newest tickets first
-d966c1f feat: added ability to close modal when clicked outside of it. styling: minor change to min height of our table component
-736dac3 bugfix: Clear form when submitting ticket on main index page
-a6dcca0 feat: added toast notifications for successful ticket submission, and invalid email addresses. added react-toastify to npm package
-f702a4e bugfix: fixed mobile view of modal inside of Table component. Text is appearing out of boxes - needs a fix.
+1. a880162 refactor: tickets will be pulled by newest tickets first
+2. d966c1f feat: added ability to close modal when clicked outside of it. styling: minor change to min height of our table component
+3. 736dac3 bugfix: Clear form when submitting ticket on main index page
+4. a6dcca0 feat: added toast notifications for successful ticket submission, and invalid email addresses. added react-toastify to npm package
+5. f702a4e bugfix: fixed mobile view of modal inside of Table component. Text is appearing out of boxes - needs a fix.
 
 ## Version 1.2
-e6721a6 feat: added prisma ORM. Updated the initial get query using prisma. To-do: convert remaining controllers
-726bbcb style: Added table row striping, cursor on hover of table data, re-worked TableModal, Status changed from dropdown to radio
-5bc0fa5 fix: removed exported post ticket function
+1. e6721a6 feat: added prisma ORM. Updated the initial get query using prisma. To-do: convert remaining controllers
+2. 726bbcb style: Added table row striping, cursor on hover of table data, re-worked TableModal, Status changed from dropdown to radio
+3. 5bc0fa5 fix: removed exported post ticket function
