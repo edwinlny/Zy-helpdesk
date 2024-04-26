@@ -6,8 +6,7 @@ import Searchbar from '../components/SearchBar';
 //create (...spread)filtered object, original object, add debounce for filter (0.5 seconds)
 const Admin = () => {
   const [ticketData, setTicketData] = useState([]);
-  // const [filteredTickets, setFilteredTickets] = useState([]);
-
+  const [searchQuery, setSearchQuery] = useState('');
   useEffect(() => {
     const getTicketsOnLoad = async () => {
       try {
@@ -21,12 +20,27 @@ const Admin = () => {
     getTicketsOnLoad();
   }, []);
 
-  //create some function to query database onclick and update my ticketData,
-  //create endpoint in my controller /search 
+  useEffect(() => {
+    const fetchTicketsBySearch = async () => {
+      try {
+        const response = await axios.get(`/tickets/search?query=${searchQuery}`);
+        console.log('do we reach this:', response.data)
+        setTicketData(response.data);
+      } catch (error) {
+        console.error('Error searching tickets', error);
+      }
+    };
 
-  //NAME
-  //DESCRIPTINO
-  //STATUS: Radio1 Radio2 Radio3
+    // Only fetch tickets by search if searchQuery is not empty
+    if (searchQuery !== '') {
+      fetchTicketsBySearch();
+    }
+  
+  }, [searchQuery]); 
+  //create some function to query database onclick and update my ticketData,
+  //create endpoint in my controller /search
+  
+
   return (
     <div>
       <NavBar />
@@ -41,8 +55,10 @@ const Admin = () => {
         </ul>
       </div>
       <div className='my-10 flex justify-center'>
-        <Searchbar />
-        {/* <Searchbar ticketData={ticketData} setFilteredTicket={setFilteredTickets} /> */}
+        <Searchbar
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+        />
       </div>
       <div className='my-10 flex justify-center'>
         <Table ticketData={ticketData} setTicketData={setTicketData} />
