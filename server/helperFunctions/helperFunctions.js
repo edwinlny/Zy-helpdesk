@@ -22,18 +22,3 @@ export async function createTicketsTable() {
   }
 }
 
-export const postTicket = (formData) => {
-  return axios.post(
-    'tickets',
-    {
-      name: formData.name,
-      email: formData.email,
-      description: formData.description,
-    },
-    {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    }
-  );
-};
