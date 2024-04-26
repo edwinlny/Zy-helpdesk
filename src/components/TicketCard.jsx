@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import AccentButton from './AccentButton';
 import axios from 'axios';
-import Toast from './Toast';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 //TO-DO - Add success/failure notification, handle data validation
 const TicketCard = () => {
   const [formData, setFormData] = useState({
@@ -10,8 +10,6 @@ const TicketCard = () => {
     email: '',
     description: '',
   });
-
-
 
   const isValidEmail = (email) => {
     // Regular expression for basic email validation
@@ -23,6 +21,8 @@ const TicketCard = () => {
   const handleCloseModal = () => {
    document.getElementById('my_modal_3').close()
   }
+
+
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -42,6 +42,7 @@ const TicketCard = () => {
   }
   if (!isValidEmail(formData.email)) {
     console.error('Invalid email address');
+    toast.error('Invalid email address')
     return;
   }
   console.log('Form Data', formData);
@@ -61,12 +62,19 @@ const TicketCard = () => {
         }
       );
       console.log('“Would normally send email here with body: ...”')
+      toast.success('Your ticket has been submitted')
+      setFormData({
+        name: '',
+        email: '',
+        description: ''
+      })
       handleCloseModal()
 
     } catch (error) {
       console.error('Error occured when submitting :', error);
     }
   };
+
 
   return (
     <div className='w-64 bg-base-100 shadow-xl justify-center'>
@@ -86,8 +94,8 @@ const TicketCard = () => {
           >
             Submit a Ticket
           </button>
-          <dialog id='my_modal_3' className='modal'>
-            <div className='modal-box'>
+          <dialog id='my_modal_3' className='modal'  onClick={handleCloseModal}>
+            <div className='modal-box' onClick={e => e.stopPropagation()}>
               
               <form onSubmit={handleSubmit} method='dialog'>
                 <button type="button" className='btn btn-sm btn-circle btn-ghost absolute right-2 top-2' onClick={handleCloseModal}>
@@ -133,7 +141,9 @@ const TicketCard = () => {
             </div>
           </dialog>
         </div>
+        
       </div>
+      <ToastContainer autoClose={2500} position={'top-center'}/>
     </div>
   );
 };

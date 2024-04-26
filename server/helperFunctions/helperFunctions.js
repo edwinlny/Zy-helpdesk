@@ -1,5 +1,5 @@
 import query from '../models/ticketModel.js';
-
+import axios from 'axios';
 export async function createTicketsTable() {
   //To-do : add constraints to status (new, inprogress, resolved)
   const createTableQuery = `
@@ -21,3 +21,4 @@ export async function createTicketsTable() {
     console.error('Error creating tickets table: ', error);
   }
 }
+
