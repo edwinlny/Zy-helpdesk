@@ -21,6 +21,12 @@ const Admin = () => {
     getTicketsOnLoad();
   }, []);
 
+  //create some function to query database onclick and update my ticketData,
+  //create endpoint in my controller /search 
+
+  //NAME
+  //DESCRIPTINO
+  //STATUS: Radio1 Radio2 Radio3
   return (
     <div>
       <NavBar />

@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import AccentButton from './AccentButton';
 import axios from 'axios';
 
-
-
 //add toast
 
 //TO-do - conditional color rendering for Status bar
@@ -17,8 +15,8 @@ const Table = (props) => {
   };
 
   const handleCloseModal = () => {
-    document.getElementById('my_modal_1').close()
-   }
+    document.getElementById('my_modal_1').close();
+  };
 
   const handleResponseChange = (e) => {
     setSelectedTicket((prevState) => ({
@@ -43,7 +41,7 @@ const Table = (props) => {
       setTicketData((prevData) => {
         return prevData.map((ticket) => {
           if (ticket.id === selectedTicket.id) {
-            return { ...ticket, ...selectedTicket }; 
+            return { ...ticket, ...selectedTicket };
           }
           return ticket;
         });
@@ -70,7 +68,7 @@ const Table = (props) => {
           {ticketData.map((item) => (
             <tr
               key={item.id}
-              className='hover'
+              className='hover cursor-pointer odd:bg-gray-100'
               onClick={() => {
                 handleRowClick(item);
                 document.getElementById('my_modal_1').showModal();
@@ -85,8 +83,11 @@ const Table = (props) => {
           ))}
         </tbody>
       </table>
-      <dialog id='my_modal_1' className='modal'  onClick={handleCloseModal}>
-        <div className='modal-box bg-neutral-content min-h-64  w-full sm:w-6/12 flex flex-col' onClick={e => e.stopPropagation()}>
+      <dialog id='my_modal_1' className='modal' onClick={handleCloseModal}>
+        <div
+          className='modal-box bg-neutral-content min-h-64  w-full sm:w-6/12 flex flex-col overflow-hidden'
+          onClick={(e) => e.stopPropagation()}
+        >
           <form method='dialog'>
             {/* if there is a button in form, it will close the modal */}
             <button className='btn btn-sm btn-circle btn-ghost absolute right-2 top-2'>
@@ -95,39 +96,43 @@ const Table = (props) => {
 
             <div className='card w-full  '>
               <div className='card-body'>
-                <div className='flex justify-between'>
-                  <div className='badge badge-accent badge-outline rounded-box max-w-100 text-lg p-6'>
+                <div className='flex-col'>
+                  <div className='text-primary font-light text-lg'>
                     Customer Name: {selectedTicket.name}
                   </div>
-                  <div className='badge badge-accent badge-outline rounded-box max-w-100 text-lg p-6'>
-                    Category: TBD
+                  <div className='text-primary  font-light text-lg'>
+                    Ticket ID: {selectedTicket.id}
                   </div>
-                  <div className='dropdown bg-accent'>
-                    <div tabIndex={0} role='button' className='btn m-1'>
-                      Status: {selectedTicket.status}
+                  <div className='text-primary  font-light text-lg'>
+                    Status:
+                    <div className='join pl-2 '>
+                      <input
+                        
+                        className='join-item btn bg-base-300'
+                        type='radio'
+                        name='options'
+                        aria-label='New'
+                        onClick={() => handleStatusChange('New')}
+                      />
+                      <input
+                        className='join-item btn bg-base-300'
+                        type='radio'
+                        name='options'
+                        aria-label='In Progress'
+                        onClick={() => handleStatusChange('In Progress')}
+                      />
+                      <input
+                        className='join-item btn bg-base-300'
+                        type='radio'
+                        name='options'
+                        aria-label='Resolved'
+                        onClick={() => handleStatusChange('Resolved')}
+                      />
                     </div>
-                    <ul
-                      tabIndex={0}
-                      className='dropdown-content z-[1] menu p-2  rounded-box w-52'
-                    >
-                      <li>
-                        <a onClick={() => handleStatusChange('New')}>New</a>
-                      </li>
-                      <li>
-                        <a onClick={() => handleStatusChange('In Progress')}>
-                          In Progress
-                        </a>
-                      </li>
-                      <li>
-                        <a onClick={() => handleStatusChange('Resolved')}>
-                          Resolved
-                        </a>
-                      </li>
-                    </ul>
                   </div>
                 </div>
-                <div className='text-primary pt-20'>Customer Issue</div>
-                <div className='box-border h-32  p-4 border-4 border-primary'>
+                <div className='text-primary pt-8'>Customer Issue</div>
+                <div className='  p-4 border border-primary'>
                   <p>{selectedTicket.description}</p>
                 </div>
                 <div className='text-primary'> Response</div>
