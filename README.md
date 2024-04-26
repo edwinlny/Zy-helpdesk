@@ -25,25 +25,27 @@ This is Edwin Leong's submission for the Z Engineering Take Home Coding Activity
 - 1. Copy github link https://github.com/edwinlny/Zy-helpdesk.git
 - 2. Navigate to directory of your choice and run ' git clone 'https://github.com/edwinlny/Zy-helpdesk.git '
 - 3. Navigate to directoy it was installed in. 'npm install' to install dependencies
-- 4. Create .env file and add the following line - PG_URI = postgres://tickets_g74e_user:8mtN5oLobzFgZz5nKUESgvEsgF5UUUYi@dpg-coe2hk8l6cac73bst830-a.ohio-postgres.render.com/tickets_g74e?ssl=true (included only for ease of use)
+- 4. Create .env file and add the two following lines -
+     PG_URI = postgres://tickets_g74e_user:8mtN5oLobzFgZz5nKUESgvEsgF5UUUYi@dpg-coe2hk8l6cac73bst830-a.ohio-postgres.render.com/tickets_g74e?ssl=true
+     DATABASE_URL= "postgres://tickets_g74e_user:8mtN5oLobzFgZz5nKUESgvEsgF5UUUYi@dpg-coe2hk8l6cac73bst830-a.ohio-postgres.render.com/tickets_g74e?ssl=true"
+     (included only for ease of use, PG_URI can be removed once all db calls are converted to prisma)
 - 5. 'npm run start' to start backend server
 - 6. 'npm run build' to build
 - 7. 'npm run dev' - open your localhost to view
 
 ## To-Do/Optimizations
 
-- 1. "Home Page" 
-  - Add Toasts for Invalid data input
-  - Add Toasts for Valid data input
-  - Styling/Formatting with themed colors
-- 2. "Admin Page"
-  - Complete search functionality - was unable to properly pass filtered state to Table component and update results dynamically. Search function itself was working. Add debounce (500ms) to avoid constant re-rendering
-  - Add filters for each column of the table, allow back-end staff to easily sort by Status, Name.
-  - Add additional columns, time/date was fetched but unused
-  - Add categories - group certain keywords together to form categories
-  - Add Pagination (list first 15 results only)
-  - Limiting char size on table - currently will stretch entire screen if long response or summary
-  - Add conditional rendering for Status - change color based on status
-  - Add Toasts for successful and unsucessful modifications
-  - Add functionality to delete tickets
-- 3. Unit Testing for components
+- 1. Fix Search Functionality
+  2. Convert all controllers to use Prisma.
+ 
+## Version 1.1
+a880162 refactor: tickets will be pulled by newest tickets first
+d966c1f feat: added ability to close modal when clicked outside of it. styling: minor change to min height of our table component
+736dac3 bugfix: Clear form when submitting ticket on main index page
+a6dcca0 feat: added toast notifications for successful ticket submission, and invalid email addresses. added react-toastify to npm package
+f702a4e bugfix: fixed mobile view of modal inside of Table component. Text is appearing out of boxes - needs a fix.
+
+## Version 1.2
+e6721a6 feat: added prisma ORM. Updated the initial get query using prisma. To-do: convert remaining controllers
+726bbcb style: Added table row striping, cursor on hover of table data, re-worked TableModal, Status changed from dropdown to radio
+5bc0fa5 fix: removed exported post ticket function
